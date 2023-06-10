@@ -1,0 +1,24 @@
+# Task to automatically build `apple/apple/game-porting-toolkit` 
+# and put the resulting Cellar into a dmg
+
+name: Build GPTK
+on:
+  - workflow_dispatch
+
+jobs:
+  build_dmg:
+    runs-on: macos-latest
+    steps:
+      - name: Install gptk
+        run: |
+          brew install --build-bottle apple/apple/game-porting-toolkit
+          brew bottle apple/apple/game-porting-toolkit
+      - name: Create dmg
+        run: |
+          brew install create-dmg
+          create-dmg gptk*.bottle.tar.gz gptk.dmg
+      - name: Upload dmg
+        uses: actions/upload-artifact@v2
+        with:
+          name: gptk
+          path: gptk.dmg

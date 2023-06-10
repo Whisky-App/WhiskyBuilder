@@ -11,12 +11,13 @@ jobs:
     steps:
       - name: Install gptk
         run: |
-          brew install --build-from-source --build-bottle apple/apple/game-porting-toolkit apple/apple/game-porting-toolkit-compiler
+          brew install --build-from-source apple/apple/game-porting-toolkit apple/apple/game-porting-toolkit-compiler
           brew bottle apple/apple/game-porting-toolkit apple/apple/game-porting-toolkit-compiler
       - name: Create dmg
         run: |
           brew install create-dmg
-          create-dmg gptk*.bottle.tar.gz gptk.dmg
+          # for debugging rn, archive the entire brew Cellar
+          create-dmg --volname "gptk" "gptk.dmg" "/usr/local/Cellar/game-porting-toolkit" "/usr/local/Cellar/game-porting-toolkit-compiler"
       - name: Upload dmg
         uses: actions/upload-artifact@v2
         with:

@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Install gptk
         run: |
-          brew install --build-bottle apple/apple/game-porting-toolkit apple/apple/game-porting-toolkit-compiler
+          brew install --build-from-source --build-bottle apple/apple/game-porting-toolkit apple/apple/game-porting-toolkit-compiler
           brew bottle apple/apple/game-porting-toolkit apple/apple/game-porting-toolkit-compiler
       - name: Create dmg
         run: |

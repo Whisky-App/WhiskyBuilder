@@ -15,7 +15,7 @@ jobs:
           brew install --build-bottle apple/apple/game-porting-toolkit 
           brew bottle apple/apple/game-porting-toolkit
           mkdir gptk
-          cp *.bottle.tar.gz gptk
+          cp *.tar.gz gptk
       - name: Create dmg
         run: |
           brew install create-dmg

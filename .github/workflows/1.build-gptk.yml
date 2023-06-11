@@ -12,8 +12,8 @@ jobs:
       - name: Install gptk
         run: |
           brew install --build-from-source apple/apple/game-porting-toolkit-compiler
-          brew install --build-bottle apple/apple/game-porting-toolkit 
-          brew bottle apple/apple/game-porting-toolkit
+          brew install --build-bottle apple/apple/game-porting-toolkit apple/apple/game-porting-toolkit-compiler
+          brew bottle apple/apple/game-porting-toolkit apple/apple/game-porting-toolkit-compiler
           mkdir gptk
           cp *.tar.gz gptk
       - name: Create bottle archive

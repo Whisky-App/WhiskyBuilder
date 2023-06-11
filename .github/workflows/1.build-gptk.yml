@@ -20,7 +20,7 @@ jobs:
         run: |
           tar -czvf gptk.tar.gz gptk
       - name: Upload bottle archive
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: gptk
           path: gptk.tar.gz

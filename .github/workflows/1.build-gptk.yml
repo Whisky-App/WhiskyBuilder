@@ -16,11 +16,11 @@ jobs:
           brew bottle apple/apple/game-porting-toolkit
           mkdir gptk
           cp *.tar.gz gptk
-      - name: Create dmg
+      - name: Create bottle archive
         run: |
-          hdiutil create -volname gptk -srcfolder gptk -ov -format UDZO gptk.dmg
-      - name: Upload dmg
+          tar -czvf gptk.tar.gz gptk
+      - name: Upload bottle archive
         uses: actions/upload-artifact@v2
         with:
           name: gptk
-          path: gptk.dmg
+          path: gptk.tar.gz

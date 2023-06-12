@@ -24,6 +24,7 @@ jobs:
         with:
           name: gptk
           path: gptk.tar.gz
-      - uses: ncipollo/release-action@v1
-        with:
-          artifacts: "gptk.tar.gz"
+      # - uses: ncipollo/release-action@v1
+      #   with:
+      #     artifacts: "gptk.tar.gz"
+      #     name: "GPTK Bottle built at ${{ github.sha }}"

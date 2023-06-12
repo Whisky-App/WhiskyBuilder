@@ -24,3 +24,6 @@ jobs:
         with:
           name: gptk
           path: gptk.tar.gz
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: "gptk.tar.gz"

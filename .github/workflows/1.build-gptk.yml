@@ -6,12 +6,14 @@ on:
   - workflow_dispatch
 
 jobs:
-  build_dmg:
+  build_gptk:
     runs-on: macos-13
     steps:
-      - name: Install gptk
+      - name: Install compiler
         run: |
           brew install apple/apple/game-porting-toolkit-compiler
+      - name: Install gptk
+        run: |
           brew install --build-bottle apple/apple/game-porting-toolkit 
           brew bottle apple/apple/game-porting-toolkit
       - name: Upload bottle archive
@@ -27,3 +29,33 @@ jobs:
         with:
           name: GTPK Cellar tree (Whisky)
           path: gptk-cellar-tree/
+  build_gptk_with_sdl2:
+    runs-on: macos-13
+    steps: 
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Install compiler
+      run: |
+        brew install apple/apple/game-porting-toolkit-compiler
+    - name: Patch the formula
+      run: |
+        patch `brew --repo apple/apple`/Formula/game-porting-toolkit.rb < patches/enable-sdl2.patch
+    - name: Install gptk
+      run: |
+        brew install --build-bottle apple/apple/game-porting-toolkit 
+        brew bottle apple/apple/game-porting-toolkit
+    - name: Upload bottle archive
+      uses: actions/upload-artifact@v3
+      with:
+        name: GTPK with SDL2 brew bottle (Harbor)
+        path: *.tar.gz
+    - name: Capture the Cellar tree (for Whisky)
+      run: |
+        cp -r /usr/local/Cellar/game-porting-toolkit/$(ls /usr/local/Cellar/game-porting-toolkit/) gptk-cellar-tree
+    - name: Upload Cellar tree
+      uses: actions/upload-artifact@v3
+      with:
+        name: GTPK with SDL2 Cellar tree (Whisky)
+        path: gptk-cellar-tree/
+
+    

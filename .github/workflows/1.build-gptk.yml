@@ -22,11 +22,7 @@ jobs:
           rm -rf gptk
       - name: Capture the Cellar tree (for Whisky)
         run: |
-          # Zip up /usr/local/Cellar/game-porting-toolkit/<wildcard for version>
-          CURRDIR=$(pwd)
-          cd /usr/local/Cellar/game-porting-toolkit/$(ls /usr/local/Cellar/game-porting-toolkit/)
-          zip -r $CURRDIR/gptk.zip .
-          cd $CURRDIR
+          cp -r /usr/local/Cellar/game-porting-toolkit/$(ls /usr/local/Cellar/game-porting-toolkit/) gptk-cellar-tree
       - name: Upload bottle archive
         uses: actions/upload-artifact@v3
         with:
@@ -36,4 +32,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: GTPK Cellar tree (Whisky)
-          path: gptk.zip
+          path: gptk-cellar-tree/

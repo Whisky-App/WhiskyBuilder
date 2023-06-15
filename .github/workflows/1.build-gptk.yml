@@ -19,12 +19,21 @@ jobs:
       - name: Create bottle archive
         run: |
           tar -czvf gptk.tar.gz gptk
+          rm -rf gptk
+      - name: Capture the Cellar tree (for Whisky)
+        run: |
+          # Zip up /usr/local/Cellar/game-porting-toolkit/<wildcard for version>
+          CURRDIR=$(pwd)
+          cd /usr/local/Cellar/game-porting-toolkit/$(ls /usr/local/Cellar/game-porting-toolkit/)
+          zip -r $CURRDIR/gptk.zip .
+          cd $CURRDIR
       - name: Upload bottle archive
         uses: actions/upload-artifact@v3
         with:
-          name: gptk
+          name: GTPK brew bottle (Harbor)
           path: gptk.tar.gz
-      # - uses: ncipollo/release-action@v1
-      #   with:
-      #     artifacts: "gptk.tar.gz"
-      #     name: "GPTK Bottle built at ${{ github.sha }}"
+      - name: Upload Cellar tree
+        uses: actions/upload-artifact@v3
+        with:
+          name: GTPK Cellar tree (Whisky)
+          path: gptk.zip

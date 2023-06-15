@@ -24,7 +24,8 @@ jobs:
             *.tar.gz
       - name: Capture the Cellar tree (for Whisky)
         run: |
-          cp -r /usr/local/Cellar/game-porting-toolkit/$(ls /usr/local/Cellar/game-porting-toolkit/) gptk-cellar-tree
+          mkdir gptk-cellar-tree
+          cp -r /usr/local/Cellar/game-porting-toolkit/$(ls /usr/local/Cellar/game-porting-toolkit/) gptk-cellar-tree/Wine
       - name: Upload Cellar tree
         uses: actions/upload-artifact@v3
         with:
@@ -34,7 +35,7 @@ jobs:
     runs-on: macos-13
     steps: 
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     - name: Install compiler
       run: |
         brew install apple/apple/game-porting-toolkit-compiler
@@ -48,16 +49,17 @@ jobs:
     - name: Upload bottle archive
       uses: actions/upload-artifact@v3
       with:
-        name: GTPK with SDL2 brew bottle (Harbor)
+        name: GPTK with SDL2 brew bottle (Harbor)
         path: |
           *.tar.gz
     - name: Capture the Cellar tree (for Whisky)
       run: |
-        cp -r /usr/local/Cellar/game-porting-toolkit/$(ls /usr/local/Cellar/game-porting-toolkit/) gptk-cellar-tree
+        mkdir gptk-cellar-tree
+        cp -r /usr/local/Cellar/game-porting-toolkit/$(ls /usr/local/Cellar/game-porting-toolkit/) gptk-cellar-tree/Wine
     - name: Upload Cellar tree
       uses: actions/upload-artifact@v3
       with:
-        name: GTPK with SDL2 Cellar tree (Whisky)
+        name: GPTK with SDL2 Cellar tree (Whisky)
         path: gptk-cellar-tree/
 
     

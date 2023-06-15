@@ -26,11 +26,12 @@ jobs:
         run: |
           mkdir gptk-cellar-tree
           cp -r /usr/local/Cellar/game-porting-toolkit/$(ls /usr/local/Cellar/game-porting-toolkit/) gptk-cellar-tree/Wine
+          touch gptk-cellar-tree/i_am_here_to_prevent_git_from_ignoring_this_directory
       - name: Upload Cellar tree
         uses: actions/upload-artifact@v3
         with:
           name: GTPK Cellar tree (Whisky)
-          path: gptk-cellar-tree/
+          path: gptk-cellar-tree
   build_gptk_with_sdl2:
     runs-on: macos-13
     steps: 
@@ -56,10 +57,11 @@ jobs:
       run: |
         mkdir gptk-cellar-tree
         cp -r /usr/local/Cellar/game-porting-toolkit/$(ls /usr/local/Cellar/game-porting-toolkit/) gptk-cellar-tree/Wine
+        touch gptk-cellar-tree/i_am_here_to_prevent_git_from_ignoring_this_directory
     - name: Upload Cellar tree
       uses: actions/upload-artifact@v3
       with:
         name: GPTK with SDL2 Cellar tree (Whisky)
-        path: gptk-cellar-tree/
+        path: gptk-cellar-tree
 
     

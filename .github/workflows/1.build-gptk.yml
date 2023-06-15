@@ -14,20 +14,14 @@ jobs:
           brew install apple/apple/game-porting-toolkit-compiler
           brew install --build-bottle apple/apple/game-porting-toolkit 
           brew bottle apple/apple/game-porting-toolkit
-          mkdir gptk
-          cp *.tar.gz gptk
-      - name: Create bottle archive
-        run: |
-          tar -czvf gptk.tar.gz gptk
-          rm -rf gptk
-      - name: Capture the Cellar tree (for Whisky)
-        run: |
-          cp -r /usr/local/Cellar/game-porting-toolkit/$(ls /usr/local/Cellar/game-porting-toolkit/) gptk-cellar-tree
       - name: Upload bottle archive
         uses: actions/upload-artifact@v3
         with:
           name: GTPK brew bottle (Harbor)
-          path: gptk.tar.gz
+          path: *.tar.gz
+      - name: Capture the Cellar tree (for Whisky)
+        run: |
+          cp -r /usr/local/Cellar/game-porting-toolkit/$(ls /usr/local/Cellar/game-porting-toolkit/) gptk-cellar-tree
       - name: Upload Cellar tree
         uses: actions/upload-artifact@v3
         with:

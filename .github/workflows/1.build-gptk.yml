@@ -18,11 +18,13 @@ jobs:
           brew bottle apple/apple/game-porting-toolkit
           mkdir -p gptk
           mv *.tar.gz gptk
+          tar -czvf gptk.tar.gz gptk
+          rm -rf gptk
       - name: Upload bottle archive
         uses: actions/upload-artifact@v3
         with:
           name: GTPK brew bottle (Harbor)
-          path: gptk
+          path: gptk.tar.gz
       - name: Capture the Cellar tree (for Whisky)
         run: |
           mkdir gptk-cellar-tree
@@ -50,11 +52,13 @@ jobs:
         brew bottle apple/apple/game-porting-toolkit
         mkdir -p gptk
         mv *.tar.gz gptk
+        tar -czvf gptk.tar.gz gptk
+        rm -rf gptk
     - name: Upload bottle archive
       uses: actions/upload-artifact@v3
       with:
         name: GPTK with SDL2 brew bottle (Harbor)
-        path: gptk
+        path: gptk.tar.gz
     - name: Capture the Cellar tree (for Whisky)
       run: |
         mkdir gptk-cellar-tree

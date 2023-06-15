@@ -10,6 +10,7 @@ jobs:
         run: |
           mkdir -p gptk-cellar-tree/wine
           touch gptk-cellar-tree/wine/i_am_here_to_prevent_git_from_ignoring_this_directory
+          touch gptk-cellar-tree/i_am_here_to_prevent_git_from_ignoring_this_directory
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:

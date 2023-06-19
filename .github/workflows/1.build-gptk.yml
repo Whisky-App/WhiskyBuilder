@@ -32,7 +32,7 @@ jobs:
         with:
           name: GTPK ${{matrix.flavour}} brew bottle (Harbor)
           path: 
-            - *.bottle.tar.gz
+            - \*.bottle.tar.gz
             - i_am_here_to_prevent_macOS_from_untarring_the_bottle
       - name: Capture the Cellar tree (for Whisky)
         run: |

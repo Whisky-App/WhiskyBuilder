@@ -20,9 +20,13 @@ jobs:
         name: Patch the formula
         run: |
           patch `brew --repo apple/apple`/Formula/game-porting-toolkit.rb < patches/enable-vulkan-sdl.patch
-      - name: Install gptk
+      - name: Install GPTK
         run: |
-          brew install --build-bottle apple/apple/game-porting-toolkit 
+          brew install --build-bottle apple/apple/game-porting-toolkit
+          rm -rf `brew --prefix game-porting-toolkit`/include
+          rm -rf `brew --prefix game-porting-toolkit`/INSTALL_RECEIPT.json
+          rm -rf `brew --prefix game-porting-toolkit`/share/man
+          find `brew --prefix game-porting-toolkit`/bin -type f ! -name "wine64" ! -name "wine64-preloader" ! -name "wineserver" -exec rm -rf {} +
           brew bottle apple/apple/game-porting-toolkit
           mkdir -p gptk
           mv *.tar.gz gptk

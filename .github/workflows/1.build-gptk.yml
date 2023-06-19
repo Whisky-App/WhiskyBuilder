@@ -25,25 +25,30 @@ jobs:
       - name: Install GPTK
         run: |
           brew install --build-bottle apple/apple/game-porting-toolkit
-          rm -rvf `brew --prefix game-porting-toolkit`/include
-          rm -rvf `brew --prefix game-porting-toolkit`/INSTALL_RECEIPT.json
-          rm -rvf `brew --prefix game-porting-toolkit`/share/man
-          find `brew --prefix game-porting-toolkit`/bin -type f ! -name "wine64" ! -name "wine64-preloader" ! -name "wineserver" -exec rm -rf {} +
-          tar -zcvf gptk.tar.gz `brew --prefix game-porting-toolkit`
+          brew bottle apple/apple/game-porting-toolkit
+          touch i_am_here_to_prevent_macOS_from_untarring_the_bottle
       - name: Upload bottle archive
         uses: actions/upload-artifact@v3
         with:
           name: GTPK ${{matrix.flavour}} brew bottle (Harbor)
-          path: gptk.tar.gz
+          path: 
+            - *.bottle.tar.gz
+            - i_am_here_to_prevent_macOS_from_untarring_the_bottle
       - name: Capture the Cellar tree (for Whisky)
         run: |
           mkdir gptk-cellar-tree
           cp -r /usr/local/Cellar/game-porting-toolkit/$(ls /usr/local/Cellar/game-porting-toolkit/) gptk-cellar-tree/Wine
+          rm -rvf gptk-cellar-tree/Wine/include
+          rm -rvf gptk-cellar-tree/Wine/INSTALL_RECEIPT.json
+          rm -rvf gptk-cellar-tree/Wine/share/man
+          # Remove every bin that **isn't** wine64, wineserver or wine64-preloader
+          find gptk-cellar-tree/Wine/bin -type f -not -name "wine64" -not -name "wineserver" -not -name "wine64-preloader" -delete
+          touch gptk-cellar-tree/i_am_here_to_prevent_macOS_from_untarring_the_bottle
           tar -czvf gptk-cellar-tree.tar.gz gptk-cellar-tree
       - name: Upload Cellar tree
         uses: actions/upload-artifact@v3
         with:
           name: GTPK ${{matrix.flavour}} Cellar tree (Whisky)
-          path: gptk-cellar-tree.tar.gz
+          path: gptk-cellar-tree
 
     

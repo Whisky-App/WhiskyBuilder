@@ -13,6 +13,8 @@ jobs:
           flavour: [Vanilla, Vulkan]
     runs-on: macos-13
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: Install compiler
         run: |
           brew install apple/apple/game-porting-toolkit-compiler

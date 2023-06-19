@@ -23,13 +23,11 @@ jobs:
       - name: Install GPTK
         run: |
           brew install --build-bottle apple/apple/game-porting-toolkit
-          rm -rf `brew --prefix game-porting-toolkit`/include
-          rm -rf `brew --prefix game-porting-toolkit`/INSTALL_RECEIPT.json
-          rm -rf `brew --prefix game-porting-toolkit`/share/man
+          rm -rvf `brew --prefix game-porting-toolkit`/include
+          rm -rvf `brew --prefix game-porting-toolkit`/INSTALL_RECEIPT.json
+          rm -rvf `brew --prefix game-porting-toolkit`/share/man
           find `brew --prefix game-porting-toolkit`/bin -type f ! -name "wine64" ! -name "wine64-preloader" ! -name "wineserver" -exec rm -rf {} +
-          brew bottle apple/apple/game-porting-toolkit
-          mv *.tar.gz ./
-          find ./ -maxdepth 1 -type f -name '*.tar.gz' -execdir mv {} gptk.tar.gz \;
+          tar -zcvf gptk.tar.gz `brew --prefix game-porting-toolkit`
       - name: Upload bottle archive
         uses: actions/upload-artifact@v3
         with:

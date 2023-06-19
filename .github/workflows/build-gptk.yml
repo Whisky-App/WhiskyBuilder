@@ -8,22 +8,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Install compiler
-        run: |
-          brew install apple/apple/game-porting-toolkit-compiler
-      - name: Patch the formula
-        run: |
-          patch `brew --repo apple/apple`/Formula/game-porting-toolkit.rb < patches/vulkan.patch
+      - name: Install Compiler
+        run: brew install apple/apple/game-porting-toolkit-compiler
+      - name: Patch GPTK
+        run: patch `brew --repo apple/apple`/Formula/game-porting-toolkit.rb < patches/vulkan.patch
       - name: Install GPTK
-        run: |
-          brew install --build-bottle apple/apple/game-porting-toolkit
-      - name: Trim files
+        run: brew install apple/apple/game-porting-toolkit
+      - name: Trim Files
         run: |
           rm -rvf `brew --prefix game-porting-toolkit`/.brew
           rm -rvf `brew --prefix game-porting-toolkit`/include
           rm -rvf `brew --prefix game-porting-toolkit`/INSTALL_RECEIPT.json
           rm -rvf `brew --prefix game-porting-toolkit`/share/man
-          find `brew --prefix game-porting-toolkit`/bin -type f -o -type l -not -name "wine64" -not -name "wine64-preloader" -not -name "wineserver" -delete
+          find `brew --prefix game-porting-toolkit`/bin -type f -type l -not -name "wine64" -not -name "wine64-preloader" -not -name "wineserver" -delete
           tar -zcvf Libraries.tar.gz -C `brew --prefix game-porting-toolkit` .
       - name: Upload GPTK
         uses: actions/upload-artifact@v3

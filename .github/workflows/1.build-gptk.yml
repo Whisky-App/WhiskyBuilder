@@ -16,18 +16,18 @@ jobs:
       - name: Install compiler
         run: |
           brew install apple/apple/game-porting-toolkit-compiler
-      - name: Install gptk
-        run: |
-          brew install --build-bottle apple/apple/game-porting-toolkit 
-          brew bottle apple/apple/game-porting-toolkit
-          mkdir -p gptk
-          mv *.tar.gz gptk
-          tar -czvf gptk.tar.gz gptk
-          rm -rf gptk
       - if: matrix.flavour == 'Vulkan'
         name: Patch the formula
         run: |
           patch `brew --repo apple/apple`/Formula/game-porting-toolkit.rb < patches/enable-vulkan-sdl.patch
+      - name: Install GPTK
+        run: |
+          brew install --build-bottle apple/apple/game-porting-toolkit
+          rm -rvf `brew --prefix game-porting-toolkit`/include
+          rm -rvf `brew --prefix game-porting-toolkit`/INSTALL_RECEIPT.json
+          rm -rvf `brew --prefix game-porting-toolkit`/share/man
+          find `brew --prefix game-porting-toolkit`/bin -type f ! -name "wine64" ! -name "wine64-preloader" ! -name "wineserver" -exec rm -rf {} +
+          tar -zcvf gptk.tar.gz `brew --prefix game-porting-toolkit`
       - name: Upload bottle archive
         uses: actions/upload-artifact@v3
         with:

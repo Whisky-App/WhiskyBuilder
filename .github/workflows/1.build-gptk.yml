@@ -7,6 +7,10 @@ on:
 
 jobs:
   build_gptk:
+    name: Build GPTK
+    strategy:
+        matrix:
+          flavour: [Vanilla, Vulkan]
     runs-on: macos-13
     steps:
       - name: Install compiler
@@ -20,10 +24,14 @@ jobs:
           mv *.tar.gz gptk
           tar -czvf gptk.tar.gz gptk
           rm -rf gptk
+      - if: matrix.flavour == 'Vulkan'
+        name: Patch the formula
+        run: |
+          patch `brew --repo apple/apple`/Formula/game-porting-toolkit.rb < patches/enable-vulkan-sdl.patch
       - name: Upload bottle archive
         uses: actions/upload-artifact@v3
         with:
-          name: GTPK brew bottle (Harbor)
+          name: GTPK ${{matrix.flavour}} brew bottle (Harbor)
           path: gptk.tar.gz
       - name: Capture the Cellar tree (for Whisky)
         run: |
@@ -33,75 +41,7 @@ jobs:
       - name: Upload Cellar tree
         uses: actions/upload-artifact@v3
         with:
-          name: GTPK Cellar tree (Whisky)
+          name: GTPK ${{matrix.flavour}} Cellar tree (Whisky)
           path: gptk-cellar-tree.tar.gz
-  build_gptk_with_sdl2:
-    runs-on: macos-13
-    steps: 
-    - name: Checkout
-      uses: actions/checkout@v3
-    - name: Install compiler
-      run: |
-        brew install apple/apple/game-porting-toolkit-compiler
-    - name: Patch the formula
-      run: |
-        patch `brew --repo apple/apple`/Formula/game-porting-toolkit.rb < patches/enable-sdl2.patch
-    - name: Install gptk
-      run: |
-        brew install --build-bottle apple/apple/game-porting-toolkit 
-        brew bottle apple/apple/game-porting-toolkit
-        mkdir -p gptk
-        mv *.tar.gz gptk
-        tar -czvf gptk.tar.gz gptk
-        rm -rf gptk
-    - name: Upload bottle archive
-      uses: actions/upload-artifact@v3
-      with:
-        name: GPTK with SDL2 brew bottle (Harbor)
-        path: gptk.tar.gz
-    - name: Capture the Cellar tree (for Whisky)
-      run: |
-        mkdir gptk-cellar-tree
-        cp -r /usr/local/Cellar/game-porting-toolkit/$(ls /usr/local/Cellar/game-porting-toolkit/) gptk-cellar-tree/Wine
-        tar -czvf gptk-cellar-tree.tar.gz gptk-cellar-tree
-    - name: Upload Cellar tree
-      uses: actions/upload-artifact@v3
-      with:
-        name: GPTK with SDL2 Cellar tree (Whisky)
-        path: gptk-cellar-tree.tar.gz
-  build_gptk_with_vulkan:
-    runs-on: macos-13
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-    - name: Install compiler
-      run: |
-        brew install apple/apple/game-porting-toolkit-compiler
-    - name: Patch the formula
-      run: |
-        patch `brew --repo apple/apple`/Formula/game-porting-toolkit.rb < patches/enable-vulkan-sdl.patch
-    - name: Install gptk
-      run: |
-        brew install --build-bottle apple/apple/game-porting-toolkit 
-        brew bottle apple/apple/game-porting-toolkit
-        mkdir -p gptk
-        mv *.tar.gz gptk
-        tar -czvf gptk.tar.gz gptk
-        rm -rf gptk
-    - name: Upload bottle archive
-      uses: actions/upload-artifact@v3
-      with:
-        name: GPTK with Vulkan brew bottle (Harbor)
-        path: gptk.tar.gz
-    - name: Capture the Cellar tree (for Whisky)
-      run: |
-        mkdir gptk-cellar-tree
-        cp -r /usr/local/Cellar/game-porting-toolkit/$(ls /usr/local/Cellar/game-porting-toolkit/) gptk-cellar-tree/Wine
-        tar -czvf gptk-cellar-tree.tar.gz gptk-cellar-tree
-    - name: Upload Cellar tree
-      uses: actions/upload-artifact@v3
-      with:
-        name: GPTK with Vulkan Cellar tree (Whisky)
-        path: gptk-cellar-tree.tar.gz
 
     

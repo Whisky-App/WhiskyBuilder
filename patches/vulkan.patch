@@ -1,14 +1,3 @@
-From 48fed93610d8e7c19cc0f0b305e195d81ee77165 Mon Sep 17 00:00:00 2001
-From: ohaiibuzzle <23693150+ohaiibuzzle@users.noreply.github.com>
-Date: Mon, 19 Jun 2023 10:33:34 +0700
-Subject: [PATCH] enable vulkan + sdl
-
----
- Formula/game-porting-toolkit.rb | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/Formula/game-porting-toolkit.rb b/Formula/game-porting-toolkit.rb
-index 94fc1c4..f54b874 100644
 --- a/Formula/game-porting-toolkit.rb
 +++ b/Formula/game-porting-toolkit.rb
 @@ -55,7 +55,8 @@ class GamePortingToolkit < Formula
@@ -40,6 +29,3 @@ index 94fc1c4..f54b874 100644
                                  "--without-openal",
                                  "--without-unwind",
                                  "--without-usb"]
--- 
-2.39.2 (Apple Git-144)
-

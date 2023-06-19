@@ -21,7 +21,7 @@ jobs:
       - if: matrix.flavour == 'Vulkan'
         name: Patch the formula
         run: |
-          patch `brew --repo apple/apple`/Formula/game-porting-toolkit.rb < patches/enable-vulkan-sdl.patch
+          patch `brew --repo apple/apple`/Formula/game-porting-toolkit.rb < patches/vulkan.patch
       - name: Install GPTK
         run: |
           brew install --build-bottle apple/apple/game-porting-toolkit

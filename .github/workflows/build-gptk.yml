@@ -20,7 +20,8 @@ jobs:
           rm -rvf `brew --prefix game-porting-toolkit`/include
           rm -rvf `brew --prefix game-porting-toolkit`/INSTALL_RECEIPT.json
           rm -rvf `brew --prefix game-porting-toolkit`/share/man
-          find `brew --prefix game-porting-toolkit`/bin -type f -type l -not -name "wine64" -not -name "wine64-preloader" -not -name "wineserver" -delete
+          find `brew --prefix game-porting-toolkit`/bin -type f -not -name "wine64" -not -name "wine64-preloader" -not -name "wineserver" -delete
+          find `brew --prefix game-porting-toolkit`/bin -type l -delete
           tar -zcvf Libraries.tar.gz -C `brew --prefix game-porting-toolkit` .
       - name: Upload GPTK
         uses: actions/upload-artifact@v3

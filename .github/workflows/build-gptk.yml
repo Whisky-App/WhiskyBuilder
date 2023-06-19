@@ -1,6 +1,7 @@
 name: Build GPTK
 on:
   - workflow_dispatch
+  - push
 jobs:
   build_gptk:
     name: Build GPTK

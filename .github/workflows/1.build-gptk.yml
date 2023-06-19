@@ -7,9 +7,10 @@ on:
 
 jobs:
   build_gptk:
+    name: Build GPTK
     strategy:
         matrix:
-          flavour: [vanilla, vulkan]
+          flavour: [Vanilla, Vulkan]
     runs-on: macos-13
     steps:
       - name: Install compiler
@@ -23,7 +24,7 @@ jobs:
           mv *.tar.gz gptk
           tar -czvf gptk.tar.gz gptk
           rm -rf gptk
-      - if: matrix.flavour == 'vulkan'
+      - if: matrix.flavour == 'Vulkan'
         name: Patch the formula
         run: |
           patch `brew --repo apple/apple`/Formula/game-porting-toolkit.rb < patches/enable-vulkan-sdl.patch

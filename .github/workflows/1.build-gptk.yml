@@ -31,9 +31,9 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: GTPK ${{matrix.flavour}} brew bottle (Harbor)
-          path: 
-            - \*.bottle.tar.gz
-            - i_am_here_to_prevent_macOS_from_untarring_the_bottle
+          path: |
+            *.bottle.tar.gz
+            i_am_here_to_prevent_macOS_from_untarring_the_bottle
       - name: Capture the Cellar tree (for Whisky)
         run: |
           mkdir gptk-cellar-tree

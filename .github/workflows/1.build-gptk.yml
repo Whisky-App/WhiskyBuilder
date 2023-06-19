@@ -16,6 +16,10 @@ jobs:
       - name: Install compiler
         run: |
           brew install apple/apple/game-porting-toolkit-compiler
+      - if: matrix.flavour == 'Vulkan'
+        name: Patch the formula
+        run: |
+          patch `brew --repo apple/apple`/Formula/game-porting-toolkit.rb < patches/enable-vulkan-sdl.patch
       - name: Install gptk
         run: |
           brew install --build-bottle apple/apple/game-porting-toolkit 
@@ -24,10 +28,6 @@ jobs:
           mv *.tar.gz gptk
           tar -czvf gptk.tar.gz gptk
           rm -rf gptk
-      - if: matrix.flavour == 'Vulkan'
-        name: Patch the formula
-        run: |
-          patch `brew --repo apple/apple`/Formula/game-porting-toolkit.rb < patches/enable-vulkan-sdl.patch
       - name: Upload bottle archive
         uses: actions/upload-artifact@v3
         with:

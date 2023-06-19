@@ -28,10 +28,8 @@ jobs:
           rm -rf `brew --prefix game-porting-toolkit`/share/man
           find `brew --prefix game-porting-toolkit`/bin -type f ! -name "wine64" ! -name "wine64-preloader" ! -name "wineserver" -exec rm -rf {} +
           brew bottle apple/apple/game-porting-toolkit
-          mkdir -p gptk
-          mv *.tar.gz gptk
-          tar -czvf gptk.tar.gz gptk
-          rm -rf gptk
+          mv *.tar.gz ./
+          find ./ -maxdepth 1 -type f -name '*.tar.gz' -execdir mv {} gptk.tar.gz \;
       - name: Upload bottle archive
         uses: actions/upload-artifact@v3
         with:

@@ -12,17 +12,17 @@ jobs:
       - name: Install Compiler
         run: brew install apple/apple/game-porting-toolkit-compiler
       - name: Patch GPTK
-        run: patch `brew --repo apple/apple`/Formula/game-porting-toolkit.rb < patches/vulkan.patch
+        run: patch $(brew --repo apple/apple)/Formula/game-porting-toolkit.rb < patches/vulkan.patch
       - name: Install GPTK
         run: brew install apple/apple/game-porting-toolkit
       - name: Trim Files
         run: |
-          rm -rvf `brew --prefix game-porting-toolkit`/.brew
-          rm -rvf `brew --prefix game-porting-toolkit`/include
-          rm -rvf `brew --prefix game-porting-toolkit`/INSTALL_RECEIPT.json
-          rm -rvf `brew --prefix game-porting-toolkit`/share/man
-          find `brew --prefix game-porting-toolkit`/bin -type f -not -name "wine64" -not -name "wine64-preloader" -not -name "wineserver" -delete
-          find `brew --prefix game-porting-toolkit`/bin -type l -delete
+          rm -rvf $(brew --prefix game-porting-toolkit)/.brew
+          rm -rvf $(brew --prefix game-porting-toolkit)/include
+          rm -rvf $(brew --prefix game-porting-toolkit)/INSTALL_RECEIPT.json
+          rm -rvf $(brew --prefix game-porting-toolkit)/share/man
+          find $(brew --prefix game-porting-toolkit)/bin -type f -not -name "wine64" -not -name "wine64-preloader" -not -name "wineserver" -delete
+          find $(brew --prefix game-porting-toolkit)/bin -type l -delete
       - name: Fix rpaths
         run: |
           install_name_tool -delete_rpath @executable_path/../lib/external $(brew --prefix game-porting-toolkit)/bin/wine64
@@ -36,10 +36,10 @@ jobs:
           install_name_tool -add_rpath @loader_path/../lib $(brew --prefix game-porting-toolkit)/bin/wineserver
       - name: Copy external deps
         run: |
-          cp -a libs/. `brew --prefix game-porting-toolkit`/lib/
+          cp -a libs/. $(brew --prefix game-porting-toolkit)/lib/
       - name: Tar GPTK
         run: |
-          tar -zcvf Libraries.tar.gz -C `brew --prefix game-porting-toolkit` .
+          tar -zcvf Libraries.tar.gz -C $(brew --prefix game-porting-toolkit) .
       - name: Upload GPTK
         uses: actions/upload-artifact@v3
         with:

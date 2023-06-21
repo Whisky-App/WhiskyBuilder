@@ -23,6 +23,22 @@ jobs:
           rm -rvf `brew --prefix game-porting-toolkit`/share/man
           find `brew --prefix game-porting-toolkit`/bin -type f -not -name "wine64" -not -name "wine64-preloader" -not -name "wineserver" -delete
           find `brew --prefix game-porting-toolkit`/bin -type l -delete
+      - name: Fix rpaths
+        run: |
+          install_name_tool -delete_rpath @executable_path/../lib/external `brew --prefix game-porting-toolkit`/bin/wine64
+          install_name_tool -delete_rpath /usr/local/lib `brew --prefix game-porting-toolkit`/bin/wine64
+          install_name_tool -add_rpath @loader_path/../lib --prefix game-porting-toolkit`/bin/wine64
+          install_name_tool -delete_rpath @executable_path/../lib/external `brew --prefix game-porting-toolkit`/bin/wine64-preloader
+          install_name_tool -delete_rpath /usr/local/lib `brew --prefix game-porting-toolkit`/bin/wine64-preloader
+          install_name_tool -add_rpath @loader_path/../lib --prefix game-porting-toolkit`/bin/wine64-preloader
+          install_name_tool -delete_rpath @executable_path/../lib/external `brew --prefix game-porting-toolkit`/bin/wineserver
+          install_name_tool -delete_rpath /usr/local/lib `brew --prefix game-porting-toolkit`/bin/wineserver
+          install_name_tool -add_rpath @loader_path/../lib --prefix game-porting-toolkit`/bin/wineserver
+      - name: Copy external deps
+        run: |
+          cp -a libs/. `brew --prefix game-porting-toolkit`/lib/
+      - name: Tar GPTK
+        run: |
           tar -zcvf Libraries.tar.gz -C `brew --prefix game-porting-toolkit` .
       - name: Upload GPTK
         uses: actions/upload-artifact@v3

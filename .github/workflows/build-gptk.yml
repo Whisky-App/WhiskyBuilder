@@ -18,13 +18,13 @@ jobs:
       - name: Patch rpaths
         run: patch $(brew --repo apple/apple)/Formula/game-porting-toolkit.rb < patches/rpath.patch
       - name: Install GPTK
-        run: brew -v install apple/apple/game-porting-toolkit
+        run: brew install apple/apple/game-porting-toolkit
       - name: Trim Files
         run: |
-          rm -rvf $(brew --prefix game-porting-toolkit)/.brew
-          rm -rvf $(brew --prefix game-porting-toolkit)/include
-          rm -rvf $(brew --prefix game-porting-toolkit)/INSTALL_RECEIPT.json
-          rm -rvf $(brew --prefix game-porting-toolkit)/share/man
+          rm -rf $(brew --prefix game-porting-toolkit)/.brew
+          rm -rf $(brew --prefix game-porting-toolkit)/include
+          rm -rf $(brew --prefix game-porting-toolkit)/INSTALL_RECEIPT.json
+          rm -rf $(brew --prefix game-porting-toolkit)/share/man
           find $(brew --prefix game-porting-toolkit)/bin -type f -not -name "wine64" -not -name "wine64-preloader" -not -name "wineserver" -delete
           find $(brew --prefix game-porting-toolkit)/bin -type l -delete
       - name: Make Libraries folder
@@ -41,7 +41,7 @@ jobs:
           cp -a DXVK Libraries/
       - name: Tar Libraries
         run: |
-          tar -zcvf Libraries.tar.gz Libraries
+          tar -zcf Libraries.tar.gz Libraries
       - name: Upload Libraries
         uses: actions/upload-artifact@v3
         with:

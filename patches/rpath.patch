@@ -4,8 +4,8 @@
      ENV.append "GSTREAMER_LIBS", "-lglib-2.0 -lgmodule-2.0 -lgstreamer-1.0 -lgstaudio-1.0 -lgstvideo-1.0 -lgstgl-1.0 -lgobject-2.0"
  
 -    # We also need to tell the linker to add Homebrew to the rpath stack.
-+    # Set rpath for Whisky
 -    ENV.append "LDFLAGS", "-lSystem -L#{HOMEBREW_PREFIX}/lib -Wl,-rpath,#{HOMEBREW_PREFIX}/lib -Wl,-rpath,@executable_path/../lib/external"
++    # Set rpath for Whisky
 +    ENV.append "LDFLAGS", "@loader_path/../lib"
  
      # Common compiler flags for both Mach-O and PE binaries.

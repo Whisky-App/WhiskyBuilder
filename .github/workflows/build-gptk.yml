@@ -28,6 +28,9 @@ jobs:
       - name: Copy external deps
         run: |
           cp -a libs/. $(brew --prefix game-porting-toolkit)/lib/
+      - name: Copy DXVK
+        run: |
+          cp -r DXVK $(brew --prefix game-porting-toolkit)
       - name: Tar GPTK
         run: |
           tar -zcvf Libraries.tar.gz -C $(brew --prefix game-porting-toolkit) .

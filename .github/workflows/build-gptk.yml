@@ -1,7 +1,9 @@
 name: Build GPTK
 on:
-  - workflow_dispatch
-  - push
+  workflow_dispatch:
+  push:
+  schedule:
+    - cron: "0 19 * * *"
 jobs:
   build_gptk:
     name: Build GPTK
@@ -37,10 +39,10 @@ jobs:
       - name: Copy DXVK
         run: |
           cp -a DXVK Libraries/
-      - name: Tar GPTK
+      - name: Tar Libraries
         run: |
           tar -zcvf Libraries.tar.gz Libraries
-      - name: Upload GPTK
+      - name: Upload Libraries
         uses: actions/upload-artifact@v3
         with:
           name: Libraries

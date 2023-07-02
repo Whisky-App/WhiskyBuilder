@@ -10,7 +10,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Tap homebrew-apple
-        name: brew tap apple/apple http://github.com/apple/homebrew-apple
+        run: brew tap apple/apple http://github.com/apple/homebrew-apple
       - name: Patch GPTK
         run: patch $(brew --repo apple/apple)/Formula/game-porting-toolkit.rb < patches/vulkan.patch
       - name: Patch rpaths

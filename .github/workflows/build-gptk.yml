@@ -25,15 +25,21 @@ jobs:
           rm -rvf $(brew --prefix game-porting-toolkit)/share/man
           find $(brew --prefix game-porting-toolkit)/bin -type f -not -name "wine64" -not -name "wine64-preloader" -not -name "wineserver" -delete
           find $(brew --prefix game-porting-toolkit)/bin -type l -delete
+      - name: Make Libraries folder
+        run: |
+          mkdir -p Libraries/Wine
+      - name: Copy GPTK
+        run: |
+          cp -a $(brew --prefix game-porting-toolkit)/. Libraries/Wine/
       - name: Copy external deps
         run: |
-          cp -a libs/. $(brew --prefix game-porting-toolkit)/lib/
+          cp -a libs/. Libraries/Wine/lib/
       - name: Copy DXVK
         run: |
-          cp -r DXVK $(brew --prefix game-porting-toolkit)
+          cp -a DXVK Libraries/
       - name: Tar GPTK
         run: |
-          tar -zcvf Libraries.tar.gz -C $(brew --prefix game-porting-toolkit) .
+          tar -zcvf Libraries.tar.gz Libraries
       - name: Upload GPTK
         uses: actions/upload-artifact@v3
         with:

@@ -9,14 +9,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Install Compiler
-        run: brew install apple/apple/game-porting-toolkit-compiler
+      - name: Tap homebrew-apple
+        name: brew tap apple/apple http://github.com/apple/homebrew-apple
       - name: Patch GPTK
         run: patch $(brew --repo apple/apple)/Formula/game-porting-toolkit.rb < patches/vulkan.patch
       - name: Patch rpaths
         run: patch $(brew --repo apple/apple)/Formula/game-porting-toolkit.rb < patches/rpath.patch
       - name: Install GPTK
-        run: brew install apple/apple/game-porting-toolkit
+        run: brew -v install apple/apple/game-porting-toolkit
       - name: Trim Files
         run: |
           rm -rvf $(brew --prefix game-porting-toolkit)/.brew

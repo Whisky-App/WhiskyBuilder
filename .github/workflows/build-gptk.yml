@@ -42,8 +42,8 @@ jobs:
       - name: Install GPTK
         run: |
           ditto GPTK/redist/lib/ Libraries/Wine/lib/
-          ln -s Libraries/Wine/lib/external/libd3dshared.dylib Libraries/Wine/lib/libd3dshared.dylib
-          ln -s Libraries/Wine/lib/external/D3DMetal.framework Libraries/Wine/lib/D3DMetal.framework
+          ln -s ./external/libd3dshared.dylib Libraries/Wine/lib/libd3dshared.dylib
+          ln -s ./external/D3DMetal.framework Libraries/Wine/lib/D3DMetal.framework
       - name: Tar Libraries
         run: |
           tar -zcf Libraries.tar.gz Libraries

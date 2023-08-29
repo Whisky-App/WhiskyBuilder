@@ -39,6 +39,9 @@ jobs:
       - name: Copy DXVK
         run: |
           cp -a DXVK Libraries/
+      - name: Copy Version .plist
+        run: |
+          cp -a GPTKVersion.plist Libraries/
       - name: Install GPTK
         run: |
           ditto GPTK/redist/lib/ Libraries/Wine/lib/

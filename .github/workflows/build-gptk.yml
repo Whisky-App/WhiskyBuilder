@@ -17,8 +17,8 @@ jobs:
         run: patch $(brew --repo apple/apple)/Formula/game-porting-toolkit.rb < patches/vulkan.patch
       - name: Patch rpaths
         run: patch $(brew --repo apple/apple)/Formula/game-porting-toolkit.rb < patches/rpath.patch
-      - name: Install GPTK-Wine
-        run: brew install apple/apple/game-porting-toolkit
+      - name: Install taps
+        run: brew install apple/apple/game-porting-toolkit winetricks
       - name: Trim Files
         run: |
           rm -rf $(brew --prefix game-porting-toolkit)/.brew
@@ -30,9 +30,10 @@ jobs:
       - name: Make Libraries folder
         run: |
           mkdir -p Libraries/Wine
-      - name: Copy GPTK-Wine
+      - name: Copy taps
         run: |
           cp -a $(brew --prefix game-porting-toolkit)/. Libraries/Wine/
+          cp -a $(brew --prefix winetricks)/bin/winetricks Libraries/
       - name: Copy external deps
         run: |
           cp -a libs/. Libraries/Wine/lib/

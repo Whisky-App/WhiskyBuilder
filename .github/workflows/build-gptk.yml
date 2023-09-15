@@ -18,7 +18,7 @@ jobs:
       - name: Patch rpaths
         run: patch $(brew --repo apple/apple)/Formula/game-porting-toolkit.rb < patches/rpath.patch
       - name: Install taps
-        run: brew install apple/apple/game-porting-toolkit@1.0.4 winetricks
+        run: brew install apple/apple/game-porting-toolkit winetricks
       - name: Trim Files
         run: |
           rm -rf $(brew --prefix game-porting-toolkit)/.brew

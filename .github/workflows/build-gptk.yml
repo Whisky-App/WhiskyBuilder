@@ -15,7 +15,6 @@ jobs:
         run: brew tap apple/apple http://github.com/Whisky-App/homebrew-apple
       - name: Install taps
         run: brew install apple/apple/game-porting-toolkit winetricks
-        continue-on-error: true
       - name: Setup upterm session
         uses: lhotari/action-upterm@v1
         if: ${{ failure() }}

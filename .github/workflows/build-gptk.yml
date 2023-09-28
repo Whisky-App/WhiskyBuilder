@@ -13,10 +13,6 @@ jobs:
         uses: actions/checkout@v3
       - name: Tap homebrew-apple
         run: brew tap apple/apple http://github.com/Whisky-App/homebrew-apple
-      - name: Patch GPTK-Wine
-        run: patch $(brew --repo apple/apple)/Formula/game-porting-toolkit.rb < patches/vulkan.patch
-      - name: Patch rpaths
-        run: patch $(brew --repo apple/apple)/Formula/game-porting-toolkit.rb < patches/rpath.patch
       - name: Install taps
         run: brew install apple/apple/game-porting-toolkit winetricks
       - name: Trim Files

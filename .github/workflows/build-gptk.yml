@@ -15,6 +15,13 @@ jobs:
         run: brew tap apple/apple http://github.com/Whisky-App/homebrew-apple
       - name: Install taps
         run: brew install apple/apple/game-porting-toolkit winetricks
+        continue-on-error: true
+      - name: Setup upterm session
+        uses: lhotari/action-upterm@v1
+        if: ${{ failure() }}
+        with:
+          ## If no one connects after 5 minutes, shut down server.
+          wait-timeout-minutes: 5
       - name: Trim Files
         run: |
           rm -rf $(brew --prefix game-porting-toolkit)/.brew

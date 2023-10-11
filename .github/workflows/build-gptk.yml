@@ -12,9 +12,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Tap homebrew-apple
-        run: brew tap apple/apple http://github.com/Whisky-App/homebrew-apple
+        run: brew tap whisky/apple http://github.com/Whisky-App/homebrew-apple
       - name: Install taps
-        run: brew install apple/apple/game-porting-toolkit winetricks
+        run: brew install whisky/apple/game-porting-toolkit winetricks
       - name: Trim Files
         run: |
           rm -rf $(brew --prefix game-porting-toolkit)/.brew

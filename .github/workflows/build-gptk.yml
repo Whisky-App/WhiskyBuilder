@@ -23,7 +23,7 @@ jobs:
       - name: Install compiler
         if: steps.compiler-cache.outputs.cache-hit != 'true'
         run: |
-          brew install apple/apple/game-porting-toolkit-compiler
+          brew install whisky/apple/game-porting-toolkit-compiler
       - name: Save compiler to cache
         if: steps.compiler-cache.outputs.cache-hit != 'true'
         uses: actions/cache/save@v3

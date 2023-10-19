@@ -33,7 +33,7 @@ jobs:
       - name: Relink compiler
         if: steps.compiler-cache.outputs.cache-hit == 'true'
         run: |
-          brew install apple/apple/game-porting-toolkit-compiler
+          brew install whisky/apple/game-porting-toolkit-compiler
           ln -s /usr/local/Cellar/game-porting-toolkit-compiler/0.1/ /usr/local/opt/game-porting-toolkit-compiler
         
       - name: Install taps

@@ -75,3 +75,9 @@ jobs:
         with:
           name: Libraries
           path: Libraries.tar.gz
+      - name: Upload Libraries to WhiskyBucket
+        env:
+          AUTH_KEY_SECRET: ${{ secrets.AUTH_KEY_SECRET }}
+        run: |
+          zip Libraries.zip Libraries.tar.gz
+          curl https://data.getwhisky.app/Libraries.zip -X PUT --header "X-Custom-Auth-Key: "$AUTH_KEY_SECRET"" --data-binary Libraries.zip

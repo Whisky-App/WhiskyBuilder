@@ -85,3 +85,4 @@ jobs:
           brew install rclone
           zip Libraries.zip Libraries.tar.gz
           rclone copy Libraries.zip r2:whisky-bucket
+          rclone copy GPTKVersion.plist r2:whisky-bucket

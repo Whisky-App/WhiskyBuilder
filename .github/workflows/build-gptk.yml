@@ -68,6 +68,9 @@ jobs:
           ditto GPTK/redist/lib/ Libraries/Wine/lib/
           ln -s ./external/libd3dshared.dylib Libraries/Wine/lib/libd3dshared.dylib
           ln -s ./external/D3DMetal.framework Libraries/Wine/lib/D3DMetal.framework
+      - name: Add Fonts
+        run: |
+          cp -a Fonts Libraries/
       - name: Tar Libraries
         run: |
           tar -zcf Libraries.tar.gz Libraries

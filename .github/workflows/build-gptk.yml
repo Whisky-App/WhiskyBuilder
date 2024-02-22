@@ -10,12 +10,12 @@ jobs:
     runs-on: macos-13
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Tap homebrew-apple
         run: brew tap whisky/apple http://github.com/Whisky-App/homebrew-apple
       - name: Check cache for compiler
         id: compiler-cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: /usr/local/Cellar/game-porting-toolkit-compiler
           key: game-porting-toolkit-compiler-0.1
@@ -25,7 +25,7 @@ jobs:
           brew install whisky/apple/game-porting-toolkit-compiler
       - name: Save compiler to cache
         if: steps.compiler-cache.outputs.cache-hit != 'true'
-        uses: actions/cache/save@v3
+        uses: actions/cache/save@v4
         with:
           key: game-porting-toolkit-compiler-0.1
           path: /usr/local/Cellar/game-porting-toolkit-compiler
@@ -72,7 +72,7 @@ jobs:
         run: |
           tar -zcf Libraries.tar.gz Libraries
       - name: Upload Libraries
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Libraries
           path: Libraries.tar.gz

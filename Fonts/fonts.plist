@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<array>
+		<dict>
+			<key>name</key>
+			<string>Andale Mono</string>
+			<key>file</key>
+			<string>andale32.exe</string>
+			<key>files</key>
+			<array>
+				<dict>
+					<key>file</key>
+					<string>anadalemo.ttf</string>
+					<key>registryName</key>
+					<string>Andale Mono (TrueType)</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Arial</string>
+			<key>file</key>
+			<string>arial32.exe</string>
+			<key>files</key>
+			<array>
+				<dict>
+					<key>file</key>
+					<string>arial.ttf</string>
+					<key>registryName</key>
+					<string>Arial (TrueType)</string>
+				</dict>
+				<dict>
+					<key>file</key>
+					<string>arialbd.ttf</string>
+					<key>registryName</key>
+					<string>Arial Bold (TrueType)</string>
+				</dict>
+				<dict>
+					<key>file</key>
+					<string>arialbi.ttf</string>
+					<key>registryName</key>
+					<string>Arial Bold Italic (TrueType)</string>
+				</dict>
+				<dict>
+					<key>file</key>
+					<string>ariali.ttf</string>
+					<key>registryName</key>
+					<string>Arial Italic (TrueType)</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Arial Black</string>
+			<key>file</key>
+			<string>arialb32.exe</string>
+			<key>files</key>
+			<array>
+				<dict>
+					<key>file</key>
+					<string>ariblk.ttf</string>
+					<key>registryName</key>
+					<string>Arial Black (TrueType)</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Comic Sans MS</string>
+			<key>file</key>
+			<string>comic32.exe</string>
+			<key>files</key>
+			<array>
+				<dict>
+					<key>file</key>
+					<string>comic.ttf</string>
+					<key>registryName</key>
+					<string>Comic Sans MS (TrueType)</string>
+				</dict>
+				<dict>
+					<key>file</key>
+					<string>comicbd.ttf</string>
+					<key>registryName</key>
+					<string>Comic Sans MS Bold (TrueType)</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Courier New</string>
+			<key>file</key>
+			<string>courie32.exe</string>
+			<key>files</key>
+			<array>
+				<dict>
+					<key>file</key>
+					<string>cour.ttf</string>
+					<key>registryName</key>
+					<string>Courier New (TrueType)</string>
+				</dict>
+				<dict>
+					<key>file</key>
+					<string>courbd.ttf</string>
+					<key>registryName</key>
+					<string>Courier New Bold (TrueType)</string>
+				</dict>
+				<dict>
+					<key>file</key>
+					<string>courbi.ttf</string>
+					<key>registryName</key>
+					<string>Courier New Bold Italic (TrueType)</string>
+				</dict>
+				<dict>
+					<key>file</key>
+					<string>couri.ttf</string>
+					<key>registryName</key>
+					<string>Courier New Italic (TrueType)</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Georgia</string>
+			<key>file</key>
+			<string>georgi32.exe</string>
+			<key>files</key>
+			<array>
+				<dict>
+					<key>file</key>
+					<string>georgia.ttf</string>
+					<key>registryName</key>
+					<string>Georgia (TrueType)</string>
+				</dict>
+				<dict>
+					<key>file</key>
+					<string>georgiab.ttf</string>
+					<key>registryName</key>
+					<string>Georgia Bold (TrueType)</string>
+				</dict>
+				<dict>
+					<key>file</key>
+					<string>georgiai.ttf</string>
+					<key>registryName</key>
+					<string>Georgia Italic (TrueType)</string>
+				</dict>
+				<dict>
+					<key>file</key>
+					<string>georgiaz.ttf</string>
+					<key>registryName</key>
+					<string>Georgia Bold Italic (TrueType)</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Impact</string>
+			<key>file</key>
+			<string>impact32.exe</string>
+			<key>files</key>
+			<array>
+				<dict>
+					<key>file</key>
+					<string>impact.ttf</string>
+					<key>registryName</key>
+					<string>Impact (TrueType)</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Times New Roman</string>
+			<key>file</key>
+			<string>times32.exe</string>
+			<key>files</key>
+			<array>
+				<dict>
+					<key>file</key>
+					<string>times.ttf</string>
+					<key>registryName</key>
+					<string>Times New Roman (TrueType)</string>
+				</dict>
+				<dict>
+					<key>file</key>
+					<string>timesbd.ttf</string>
+					<key>registryName</key>
+					<string>Times New Roman Bold (TrueType)</string>
+				</dict>
+				<dict>
+					<key>file</key>
+					<string>timesbi.ttf</string>
+					<key>registryName</key>
+					<string>Times New Roman Bold Italic (TrueType)</string>
+				</dict>
+				<dict>
+					<key>file</key>
+					<string>timesi.ttf</string>
+					<key>registryName</key>
+					<string>Times New Roman Italic (TrueType)</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Trebuchet MS</string>
+			<key>file</key>
+			<string>trebuc32.exe</string>
+			<key>files</key>
+			<array>
+				<dict>
+					<key>file</key>
+					<string>trebuc.ttf</string>
+					<key>registryName</key>
+					<string>Trebuchet MS (TrueType)</string>
+				</dict>
+				<dict>
+					<key>file</key>
+					<string>trebucbd.ttf</string>
+					<key>registryName</key>
+					<string>Trebuchet MS Bold (TrueType)</string>
+				</dict>
+				<dict>
+					<key>file</key>
+					<string>trebucbi.ttf</string>
+					<key>registryName</key>
+					<string>Trebuchet MS Bold Italic (TrueType)</string>
+				</dict>
+				<dict>
+					<key>file</key>
+					<string>trebucit.ttf</string>
+					<key>registryName</key>
+					<string>Trebuchet MS Italic (TrueType)</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Verdana</string>
+			<key>file</key>
+			<string>verdan32.exe</string>
+			<key>files</key>
+			<array>
+				<dict>
+					<key>file</key>
+					<string>verdana.ttf</string>
+					<key>registryName</key>
+					<string>Verdana (TrueType)</string>
+				</dict>
+				<dict>
+					<key>file</key>
+					<string>verdanab.ttf</string>
+					<key>registryName</key>
+					<string>Verdana Bold (TrueType)</string>
+				</dict>
+				<dict>
+					<key>file</key>
+					<string>verdanai.ttf</string>
+					<key>registryName</key>
+					<string>Verdana Italic (TrueType)</string>
+				</dict>
+				<dict>
+					<key>file</key>
+					<string>verdanaz.ttf</string>
+					<key>registryName</key>
+					<string>Verdana Bold Italic (TrueType)</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Webdings</string>
+			<key>file</key>
+			<string>webdin32.exe</string>
+			<key>files</key>
+			<array>
+				<dict>
+					<key>file</key>
+					<string>webdings.ttf</string>
+					<key>registryName</key>
+					<string>Webdings (TrueType)</string>
+				</dict>
+			</array>
+		</dict>
+	</array>
+</plist>
